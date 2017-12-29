@@ -1,11 +1,18 @@
+"""
+Programme takes .tex file name command line input and produces a wordcount.txt file
+containing the word count of file ignoring certain words specified in programme
+"""
+
 import sys
 
 filename = str(sys.argv[1])
 
 wordCount = 0
 
-toCheck = ["\\chapter", "\\begin", "\\end", "\\section", "\\cite"]
+#list of beginnings to ignore in a word count
+toCheck = ["\\begin", "\\end", "\\documentclass", "\\usepackage", "\\title", "\\date", "\\chapter", "\\section", "\\subsection", "\\cite"]
 
+#read .tex file and update wordCount
 with open(filename, "r") as texFile:
     for line in texFile:
         words = []
@@ -20,7 +27,11 @@ with open(filename, "r") as texFile:
                 counter += 1
             if is_in == False:
                 wordCount += 1
-               
+
 print wordCount
+                
+#output wordcount.txt file
+with open("wordcount.txt", "w") as outputFile:
+    outputFile.write("wordcount: {}".format(wordCount))
         
         

@@ -1,5 +1,0 @@
-\begin{document}
-\chapter{Test1}
-Test 1.
-\textbf{bold face test}
-\end{document}
