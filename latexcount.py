@@ -10,14 +10,13 @@ filename = str(sys.argv[1])
 wordCount = 0
 
 #list of beginnings to ignore in a word count
-toCheck = ["\\begin", "\\end", "\\documentclass", "\\usepackage", "\\title", "\\date", "\\chapter", "\\section", "\\subsection", "\\cite"]
+toCheck = ["\\begin", "\\end", "\\documentclass", "\\usepackage", "\\title", "\\date", "\\chapter", "\\section", "\\subsection", "\\cite", "\\newcommand", "\\maketitle", "\\geometry"]
 
 #read .tex file and update wordCount
 with open(filename, "r") as texFile:
     for line in texFile:
         words = []
         words.append(line.split())
-        print words
         for word in words[0]:
             is_in = False
             counter = 0
@@ -27,8 +26,6 @@ with open(filename, "r") as texFile:
                 counter += 1
             if is_in == False:
                 wordCount += 1
-
-print wordCount
                 
 #output wordcount.txt file
 with open("wordcount.txt", "w") as outputFile:
